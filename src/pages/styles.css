@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f8f9fa!important;
+}
+.form{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 25px;
+}
+.btn {
+    width: 100%;
+    margin: 18px 0 9px 0;
+  }
+  h3 {
+    margin: 0 0 24px 0;
+  }
+p{
+    padding-top: 10px;
+}
