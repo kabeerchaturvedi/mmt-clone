@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const mystyle = {
   display: "flex",
@@ -6,11 +7,25 @@ const mystyle = {
   position: "relative",
   alignItems: "center",
 };
-const home = () => {
+
+const Home = () => {
+  const history = useHistory();
   const bookingList = JSON.parse(localStorage.getItem("bookingInfo")) || [];
   //const userDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
+  const changeBookingStatus = (booking, status) => {
+   
+    const newBookings = bookingList.map((oldBooking) => {
+      if (booking.id === oldBooking.id) {
+        booking.status = status;
+        return booking;
+      }
+      return oldBooking;
+    });
+    localStorage.setItem("bookingInfo", JSON.stringify(newBookings));
+    history.push("/bookings");
+  };
   return bookingList
     .filter((item) => item.ownerInfo?.id === users.id)
     .map((item) => {
@@ -37,12 +52,22 @@ const home = () => {
               </tr>
             </table>
             <div className="card-footer bg-transparent border-success">
-              <button className="btn btn-success">Approve</button>
-              <button className="btn btn-danger ">Reject</button>
+              <button
+                className="btn btn-success"
+                onClick={() => changeBookingStatus(item, "approved")}
+              >
+                Approve
+              </button>
+              <button
+                className="btn btn-danger "
+                onClick={() => changeBookingStatus(item, "rejected")}
+              >
+                Reject
+              </button>
             </div>
           </div>
         </div>
       );
     });
 };
-export default home;
+export default Home;

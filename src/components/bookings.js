@@ -14,7 +14,16 @@ const myStyles = {
 function HostVillas() {
   const allVillas = JSON.parse(localStorage.getItem("allVillas")) || [];
   const userDetails = JSON.parse(localStorage.getItem("userDetails")) || [];
+  const userInfo = JSON.parse(localStorage.getItem("userDetails"));
+
   const history = useHistory();
+  const bookingConfirm = (item, finalPriceWithTaxes) => {
+    if (userInfo) {
+      history.push(`/booking-confirmations/${item.id}/${finalPriceWithTaxes}`);
+    } else {
+      history.push("/login");
+    }
+  };
 
   return (
     <div>
@@ -34,13 +43,14 @@ function HostVillas() {
             return (
               <div className="main-div" key={item.id}>
                 <div className="img-div">
-                  <img src={item.Image} style={myStyles} alt="img"/>
+                  <img src={item.Image} style={myStyles} alt="img" />
                 </div>
                 <div className="info-div">
                   <div className="info-imgs">
                     <img
                       src="https://imgak.mmtcdn.com/pwa_v3/pwa_hotel_assets/web/mmtAssured.png"
-                      className="img-mmt" alt="img"
+                      className="img-mmt"
+                      alt="img"
                     />
                   </div>
                   <div className="header">
@@ -71,11 +81,7 @@ function HostVillas() {
                   <div className="sec-btn">
                     <button
                       className="btn-book"
-                      onClick={(event) =>
-                        history.push(
-                          `/booking-confirmations/${item.id}/${finalPriceWithTaxes}`
-                        )
-                      }
+                      onClick={() => bookingConfirm(item, finalPriceWithTaxes)}
                     >
                       Book Villa
                     </button>

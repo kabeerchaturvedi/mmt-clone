@@ -14,7 +14,10 @@ const Header = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
         <a className="navbar-brand">
-          <img src="/assets/mmtLogoWhite.png" style={mystyle} alt="Logo"/>
+          <img
+            src="https://imgak.mmtcdn.com/pwa_v3/pwa_hotel_assets/header/mmtLogoWhite.png"
+            style={mystyle}
+          />
         </a>
 
         <div className="collapse navbar-collapse">

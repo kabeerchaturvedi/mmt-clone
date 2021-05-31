@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import home from "./pages/home";
+import Home from "./pages/home";
 import BuyVillas from "./components/booking-details";
 import HostVillas from "./components/bookings";
 import login from "./pages/login";
@@ -17,7 +17,7 @@ const App = () => {
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/" component={home} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/bookings" component={HostVillas} />
             <Route exact path="/booking-details" component={BuyVillas} />
             <Route
