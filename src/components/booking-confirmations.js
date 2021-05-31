@@ -1,7 +1,6 @@
 import React from "react";
 
-const allVillas = reactLocalStorage.getObject("allVillas", [], true);
-console.log(allVillas);
+const allVillas = JSON.parse(localStorage.getItem("allVillas", [], true));
 
 const defaultBookState = {
   checkIn: "",
@@ -14,7 +13,6 @@ const defaultBookState = {
 const formDetails = [
   { label: "Check-in", name: "checkin", type: "date" },
   { label: "Check-out", name: "checkout", type: "date" },
-  //no of guests??
   { label: "Number of guests", name: "rating", type: "number" },
   { label: "Meal", name: "meal", type: "string" },
 ];
@@ -24,7 +22,7 @@ const bookingConfirmations = ({}) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const bookVillas = reactLocalStorage.getObject("bookVillas", [], true);
+    const bookVillas = JSON.parse(localStorage.getItem("bookVillas")) || [];
     bookVillas.push({ ...bookDetails });
     localStorage.setItem("bookVillas", JSON.stringify(bookVillas));
 
@@ -56,8 +54,6 @@ const bookingConfirmations = ({}) => {
         </button>
       </form>
     </div>
-
-  
   );
 };
 

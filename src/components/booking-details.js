@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { reactLocalStorage } from "reactjs-localstorage";
 import "../pages/styles.css";
 
-const myStyles = {
-  display: "flex",
-  alignItems: "center",
-};
 const defaultVillaState = {
   name: "",
   location: "",
@@ -23,12 +18,12 @@ const formDetails = [
   { label: "Image", name: "Image", type: "string" },
 ];
 
-const BuyVillas = ({}) => {
+const BuyVillas = () => {
   const [villaDetails, setVillaDetails] = useState(defaultVillaState);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const allVillas = reactLocalStorage.getObject("allVillas", [], true);
+    const allVillas = JSON.parse(localStorage.getItem("allVillas")) || [];
     const user = JSON.parse(localStorage.getItem("userDetails")) || [];
     allVillas.push({ ...villaDetails, id: uuidv4(), ownerInfo: user });
     localStorage.setItem("allVillas", JSON.stringify(allVillas));
@@ -43,7 +38,7 @@ const BuyVillas = ({}) => {
   return (
     <div className="container">
       <form className="form" onSubmit={onSubmit}>
-      <h3>Post your Villa details</h3>
+        <h3>Post your Villa details</h3>
 
         {formDetails.map((formItem) => {
           const { label, name, type } = formItem;

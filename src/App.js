@@ -7,6 +7,7 @@ import register from "./pages/register";
 import Header from "./pages/header";
 import Logout from "./pages/logout";
 import ConfirmBookingDetails from "./components/confirmBookingDetails";
+import ListOfBookings from "./components/listOfBookings";
 const App = () => {
   const userInfo = JSON.parse(localStorage.getItem("userDetails"));
 
@@ -25,14 +26,13 @@ const App = () => {
               component={ConfirmBookingDetails}
             />
             <Route exact path="/logout" component={Logout} />
-
+            <Route exact path="/your-bookings" component={ListOfBookings} />
           </Switch>
         </Router>
       ) : (
         <Router>
           <Header />
           <Switch>
-            <Route exact path="/" component={home} />
             <Route exact path="/bookings" component={HostVillas} />
             <Route exact path="/booking-details" component={BuyVillas} />
             <Route exact path="/login" component={login} />

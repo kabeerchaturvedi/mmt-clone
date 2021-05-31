@@ -2,18 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const myStyles = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+const defaultUserState = {
+  username: "",
+  password: "",
+  email: "",
 };
-
 const Register = () => {
-  const [userRegistration, setUserRegistration] = useState({
-    username: "",
-    password: "",
-    email: "",
-  });
+  const [userRegistration, setUserRegistration] = useState(defaultUserState);
   const handleInput = (event) => {
     const name = event.target.name;
 
@@ -30,15 +25,17 @@ const Register = () => {
     if (!userExists) {
       users.push({ ...userRegistration, id: uuidv4() });
       localStorage.setItem("users", JSON.stringify(users));
+      alert("User registered successfully");
+      setUserRegistration(defaultUserState);
     } else {
       alert("user exists!");
     }
   };
 
   return (
-    <div className="container" >
+    <div className="container">
       <form onSubmit={handleSubmit} className="form">
-        <label >
+        <label>
           <p>Username</p>
           <input
             type="text"
@@ -49,7 +46,7 @@ const Register = () => {
             onChange={handleInput}
           />
         </label>
-        <label >
+        <label>
           <p>Password</p>
           <input
             type="password"
@@ -60,7 +57,7 @@ const Register = () => {
             onChange={handleInput}
           />
         </label>
-        <label >
+        <label>
           <p>Email</p>
           <input
             type="email"

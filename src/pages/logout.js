@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { useEffect } from "react";
 function Logout() {
-  //useEffect
   useEffect(() => {
     window.localStorage.removeItem("userDetails");
     window.location.reload();

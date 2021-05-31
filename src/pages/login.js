@@ -1,13 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-import styles from "./styles.css";
-
-// const myStyles = {
-//   display: "flex",
-//   flexDirection: "column",
-//   alignItems: "center",
-// };
 
 const Login = () => {
   const [userDetails, setuserDetails] = useState({
@@ -38,9 +30,9 @@ const Login = () => {
   };
 
   return (
-    <div  className="container">
+    <div className="container">
       <form onSubmit={handleSubmit} className="form">
-      <h3>Login</h3>
+        <h3>Login</h3>
 
         <label>
           <p>email</p>
@@ -53,7 +45,7 @@ const Login = () => {
             onChange={handleInput}
           />
         </label>
-        <label >
+        <label>
           <p>Password</p>
           <input
             type="password"

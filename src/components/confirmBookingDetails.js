@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { reactLocalStorage } from "reactjs-localstorage";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useHistory } from "react-router-dom";
 
 function ConfirmBookingDetails() {
   let { hotelId, finalPriceWithTaxes } = useParams();
@@ -10,6 +10,7 @@ function ConfirmBookingDetails() {
   const user = JSON.parse(localStorage.getItem("userDetails")) || [];
 
   const hotelDetails = allVillas.find((hotel) => hotel.id === hotelId);
+  const history = useHistory();
 
   const confirmDetails = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function ConfirmBookingDetails() {
       userInfo: user,
     });
     localStorage.setItem("bookingInfo", JSON.stringify(bookings));
+    history.push("/your-bookings");
   };
   return (
     <div>

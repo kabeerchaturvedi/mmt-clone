@@ -25,6 +25,17 @@
 .header {
   font-weight: 900;
 }
+.head-rating{
+  line-height: normal;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 4px 2px 6px;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    vertical-align: middle;
+    background-color: #388e3c;
+}
 .main {
   padding-top: 15px;
   position: relative;
@@ -58,14 +69,34 @@
   width: 30%;
   text-align: right;
 }
+:where(.disc-amt,.disc-perc,.sec-price,.sec-btn){
+  height: 25px;
+  box-sizing: border-box;
+}
+.disc-amt {
+  color: #4a4a4a;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+}
+.disc-perc {
+  align-items: center;
+  color: #eb2026;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  
+}
 .sec-price {
-  height: 70%;
+  height: 20%;
   font-weight: 900;
   font-size: 19px;
   line-height: 26px;
 }
 .sec-btn {
   height: 30%;
+  padding-top:50px;
 }
 .btn-book {
   border-radius: 34px;

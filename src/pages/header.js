@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 const mystyle = {
@@ -13,28 +13,49 @@ const Header = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark ">
-        <a className="navbar-brand" href="#">
-          <img src="/assets/mmtLogoWhite.png" style={mystyle} />
+        <a className="navbar-brand">
+          <img src="/assets/mmtLogoWhite.png" style={mystyle} alt="Logo"/>
         </a>
 
         <div className="collapse navbar-collapse">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/bookings" className="nav-link">
-                🏠 Buy Villa
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/booking-details" className="nav-link">
-                🏠 Host Villa
-              </Link>
-            </li>
-          </ul>
+          {userInfo ? (
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">
+                  🔔 Notification
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/bookings" className="nav-link">
+                  🏠 Buy Villa
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/booking-details" className="nav-link">
+                  🏠 Host Villa
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/your-bookings" className="nav-link">
+                  🎫 Bookings
+                </Link>
+              </li>
+            </ul>
+          ) : (
+            <ul className="navbar-nav mr-auto">
+              <li className="nav-item">
+                <Link to="/bookings" className="nav-link">
+                  🏠 Buy Villa
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/booking-details" className="nav-link">
+                  🏠 Host Villa
+                </Link>
+              </li>
+            </ul>
+          )}
+
           {userInfo ? (
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
